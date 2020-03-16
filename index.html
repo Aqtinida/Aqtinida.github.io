@@ -2,72 +2,13 @@
 <html>
 <body>
 
-<script type="text/javascript">
-(function(d,w){
-                   
-	var r=false,
-		n=d.getElementsByTagName("script")[0],
-		s=d.createElement("script"),
-		f=function(){n.parentNode.insertBefore(s,n);};
+<link rel="stylesheet" href="https://embed.calculoid.com/styles/main.css" /><script src="https://embed.calculoid.com/scripts/combined.min.js"></script><div ng-app="calculoid" ng-controller="CalculoidMainCtrl" ng-init="init({calcId:77735,apiKey:'93b51ed75e6d31c11b14e'})" ng-include="load()"></div>
 
-	s.type="text/javascript";
-	s.async=true;
-	s.src="https://rasschitai.ru/libs/Views/js/js.widget.js?t="+(new Date()).getTime();
-	s.onload=s.onreadystatechange=function(){
-
-		if(!r && (!this.readyState||this.readyState=='complete')){
-
-			r=true;
-
-			var rasschitai=new w.RASSHITAI({
-				'uuid':'6bcce83e-9299-4f15-b4e3-932418af5b8d'
-			});
-			if(rasschitai.init()){
-
-				/*
-				@type - тип события
-				@callback - функция возврата после получения данных от калькулятора
-				*/
-				rasschitai.on('success',function(data){
-	
-					console.log(data);
-					/*
-					{
-						form:{
-							a:{label:"A",value:5},
-							b:{label:"Б",value:10}
-						},
-						result:{
-							r1:{label:"a+b=",value:15}
-						}
-					}
-					*/
-					
-					/*
-					Отправляет данные на ваш сервер
-					@url - если ваш файл называется ajax.php и находиться в корне сайта, то путь до него будет /ajax.php 
-					@data - данные в виде JSON 
-					@callback - функция возврата после отправки данных, данные приходят в виде JSON
-					*/
-					rasschitai.ajax('/ajax.php',{'result':data.result.r1.value},function(r){
-
-						console.log(r);
-						//{status:"ok",post:{result:"15"}}
-					});
-				});
-			}
-		}
-	};
-
-	if(w.opera=="[object Opera]"){
-
-		d.addEventListener("DOMContentLoaded",f,false);
-	}else{
-		f();
-	}
-
-})(document,window);
-</script>
-<a href="https://rasschitai.ru/constructor_uuid.html" id="rasschitai-6bcce83e-9299-4f15-b4e3-932418af5b8d" title="Конструктор калькуляторов | Рассчитай">Конструктор калькуляторов</a>
-</body>
+<style>
+a {
+    text-decoration: none;
+    display: none;
+}
+</style>
+	</body>
 </html>
