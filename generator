@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<div> 
+   <p><b>Дата и время начала выгрузки*</b><br>
+  <input type="datetime-local" id="datetime" name="date"/>
+     <p><b>Часовой пояс местный*</b><br>
+	 <input id="gmtloc" />
+	      <p><b>Часовой пояс (GMT) по которому нужно выгрузить</b><br>
+	 <input id="gmt" />
+</div>
+ <p id="result_unix"></p>
+ <script>
+
+ function complete(){
+          var date = document.getElementById("datetime").value;
+		  var result1 = Date.parse(date)/1000;
+		  var gmt = Number(document.getElementById("gmtloc").value)-3;
+		  var gmtloc = gmt*3600;
+		  var gmtvig = Number(document.getElementById("gmt").value)-Number(document.getElementById("gmtloc").value);
+		  var gmtvig2 = gmtvig*3600; 
+		  var gmtvig1 = result1-gmtvig2;
+
+		  
+ 	      var num1 = Number(document.getElementById("num1").value);
+          var num2 = Number(document.getElementById("num2").value);
+          var num3 = Number(document.getElementById("num3").value);
+          var result2 = num1*24*60*60 + num2*60*60 + num3*60;
+		  
+          var part1 = "https://video2.sputnik.systems/";
+          var part2 = document.getElementById("stream").value;
+		  var part3 = "/archive-"
+		  var part4 = result1+gmtloc + "-";
+		  var part5 = result2;
+		  var part6 = ".mp4"
+		  var part7 = gmtvig1 + "-";
+          var result = part1+part2+part3+part4+part5+part6;
+		  var result2 = part1+part2+part3+part7+part5+part6;
+		  var result3 = part1+part2+part3+result1+"-"+part5+part6;
+
+          document.getElementById("streamres").innerHTML = result;
+		  document.getElementById("streamres2").innerHTML = result2;
+		  document.getElementById("streamres3").innerHTML = result3;
+}
+				
+</script>
+
+   <p><b>Длительность выгрузки*</b><br>
+<div> 
+   <p><b>Дни</b><br>
+  <input id="num1" />
+   <p><b>Часы</b><br>
+  <input id="num2" />
+    <p><b>Минуты</b><br>
+ <input id="num3"/>
+
+</div>
+ <p id="resultlong"></p>
+
+	<div> 
+   <p><b>ID потока</b><br>
+  <input id="stream" />
+   <button onclick="complete()">Ссылка на потоки</button>
+   </div>
+   <p><b>Результат по Московскому времени</b><br>
+ <p id="streamres"></p>
+ <p><b>Результат по часовому поясу города выгрузки</b><br>
+  <p id="streamres2"></p>
+  <p><b>Результат по местному времени</b><br>
+    <p id="streamres3"></p>
+		
+	</body>
+</html>
