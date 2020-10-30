@@ -119,7 +119,8 @@ width:60%;
 	</br>
 	  <p><b>Ссылка на эндпоинт, номер панели</b><br>
    <input id="endpoint" />
-		  
+	 <script>
+	  
 	function endpoint(){
 	var endpoint1 = "http://cs.dev.sputnik.systems/api/sputnik/v1/config?id=";
 	var endpoint2 = document.getElementById("endpoint").value;
@@ -127,7 +128,9 @@ width:60%;
 	var endpointres = endpoint1+endpoint2;
 		  
 		  document.getElementById("endpointr").innerHTML = endpointres;
-		  
+	}
+	</script>
+	  
 <button onclick="endpoint()">Ссылка на энпоинт</button>
 	  <p><b>Результат по местному времени</b><br>
     <p id="endpointr"></p>
