@@ -144,7 +144,9 @@ width:60%;
 
  function endpoint(){
 var UUID = document.getElementById("uuid").value;
-URL url = new URL("https://api.sputnik.systems/api/v1/account/devices/intercoms/+UUID");
+var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
+var cwslink = apilink+UUID;
+URL url = new URL cwslink;
 HttpURLConnection http = (HttpURLConnection)url.openConnection();
 http.setRequestMethod("PATCH");
 http.setDoOutput(true);
