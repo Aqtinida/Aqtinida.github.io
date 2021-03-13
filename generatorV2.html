@@ -136,13 +136,13 @@ width:60%;
     <p id="endpointr"></p>
 
 <div>
-	  <p><b>UUID панели</b><br>
+	  <p><b>UUID панели2</b><br>
   <input id="uuid" />
-	  <button onclick="endpoint()">Установить эндпоинты калитки</button>
+	  <button onclick="cwsendpoint()">Установить эндпоинты калитки</button>
 </div>
  <script>
 
- function endpoint(){
+ function cwsendpoint(){
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
 var cwslink = apilink+UUID;
