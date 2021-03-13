@@ -140,8 +140,7 @@ width:60%;
   <input id="uuid" />
 	  <button onclick="cwsendpoint()">Установить эндпоинты калитки</button>
 	  <button onclick="ntkendpoint()">Установить эндпоинты новотелеком</button>
-	 <button onclick="ourendpoint()">Установить наши эндпоинты</button>
-	<button onclick="reboot()">Перезагрузить панель</button>	  
+	 <button onclick="ourendpoint()">Установить наши эндпоинты</button>	  
 		  
 </div>
  <script>
@@ -232,6 +231,30 @@ var data = `{
 }`;
 
 xhr.send(data);
+	 
+	 setTimeout(function() {
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var UUID = document.getElementById("uuid").value;
+var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
+var rebo = "/reset";
+var resetintercom = corsd+apilink+UUID+rebo;
+var url = resetintercom;
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+xhr.send();
+	}, 10000);
+
 }
 				
 </script>
@@ -266,13 +289,8 @@ var data = `{
 }`;
 
 xhr.send(data);
-}
-				
-</script>
-
-<script>
-function reboot(){
-	setTimeout(function() {
+	 
+ setTimeout(function() {
 var corsd = "https://cors-anywhere.herokuapp.com/";
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
@@ -293,10 +311,12 @@ xhr.onreadystatechange = function () {
    }};
 
 xhr.send();
-	}, 10000);
+	}, 10000);	 
 }
-
+				
 </script>
+
+
 
 
 
