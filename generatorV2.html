@@ -140,7 +140,9 @@ width:60%;
   <input id="uuid" />
 	  <button onclick="cwsendpoint()">Установить эндпоинты калитки</button>
 	  <button onclick="ntkendpoint()">Установить эндпоинты новотелеком</button>
-	 <button onclick="ourendpoint()">Установить эндпоинты новотелеком</button>
+	 <button onclick="ourendpoint()">Установить наши эндпоинты</button>
+	<button onclick="reboot()">Перезагрузить панель</button>	  
+		  
 </div>
  <script>
 
@@ -182,10 +184,8 @@ xhr.send(data);
 var corsd = "https://cors-anywhere.herokuapp.com/";
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
-var cwslink = corsd+apilink+UUID;
-var url = cwslink;
-
-var url = "https://api.sputnik.systems/api/v1/account/devices/intercoms/e8acd9c4-076a-4b2c-afbd-da51986ac73c";
+var ntklink = corsd+apilink+UUID;
+var url = ntklink;
 
 var xhr = new XMLHttpRequest();
 xhr.open("PATCH", url);
@@ -218,8 +218,8 @@ xhr.send(data);
 var corsd = "https://cors-anywhere.herokuapp.com/";
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
-var cwslink = corsd+apilink+UUID;
-var url = cwslink;
+var wslink = corsd+apilink+UUID;
+var url = wslink;
 
 var xhr = new XMLHttpRequest();
 xhr.open("PATCH", url);
@@ -245,6 +245,41 @@ xhr.send(data);
 }
 				
 </script>
+
+<script>
+function reboot(){
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var UUID = document.getElementById("uuid").value;
+var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
+var resetintercom = corsd+apilink+UUID+reset;
+var reset = /reset
+var url = resetintercom;
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+xhr.send();
+
+
+</script>
+
+
+
+
+
+
+
+
+
 
 	</div>
 	<div class="right_block">
