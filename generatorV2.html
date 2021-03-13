@@ -139,6 +139,8 @@ width:60%;
 	  <p><b>UUID панели</b><br>
   <input id="uuid" />
 	  <button onclick="cwsendpoint()">Установить эндпоинты калитки</button>
+	  <button onclick="ntkendpoint()">Установить эндпоинты новотелеком</button>
+	 <button onclick="ourendpoint()">Установить эндпоинты новотелеком</button>
 </div>
  <script>
 
@@ -174,8 +176,75 @@ xhr.send(data);
 				
 </script>	
 
+ <script>
 
+ function ntkendpoint(){
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var UUID = document.getElementById("uuid").value;
+var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
+var cwslink = corsd+apilink+UUID;
+var url = cwslink;
 
+var url = "https://api.sputnik.systems/api/v1/account/devices/intercoms/e8acd9c4-076a-4b2c-afbd-da51986ac73c";
+
+var xhr = new XMLHttpRequest();
+xhr.open("PATCH", url);
+
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+var data = `{
+"boot_uri": "fs.sputnik.systems.novotelecom.ru",
+"websocket_url": "ws.sputnik.systems.novotelecom.ru:81",
+"config_url": "cs.sputnik.systems.novotelecom.ru:82",
+"sounds_url": "fs.sputnik.systems.novotelecom.ru"
+}`;
+
+xhr.send(data);
+}
+				
+</script>
+
+ <script>
+
+ function ourendpoint(){
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var UUID = document.getElementById("uuid").value;
+var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
+var cwslink = corsd+apilink+UUID;
+var url = cwslink;
+
+var xhr = new XMLHttpRequest();
+xhr.open("PATCH", url);
+
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+var data = `{
+"boot_uri": "fs.dev.sputnik.systems",
+"websocket_url": "ws.dev.sputnik.systems:80",
+"config_url": "cs.dev.sputnik.systems:80",
+"sounds_url": "fs.dev.sputnik.systems:80"
+}`;
+
+xhr.send(data);
+}
+				
+</script>
 
 	</div>
 	<div class="right_block">
