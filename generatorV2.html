@@ -175,8 +175,7 @@ var data = `{
 
 xhr.send(data);
 	 
-	 function reboot(){
-	setTimeout(function() {
+setTimeout(function() {
 var corsd = "https://cors-anywhere.herokuapp.com/";
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
@@ -198,7 +197,7 @@ xhr.onreadystatechange = function () {
 
 xhr.send();
 	}, 10000);
-}
+
 }
 				
 </script>	
