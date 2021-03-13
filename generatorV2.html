@@ -136,14 +136,14 @@ width:60%;
     <p id="endpointr"></p>
 
 <div>
-	  <p><b>UUID панели4</b><br>
+	  <p><b>UUID панели5</b><br>
   <input id="uuid" />
 	  <button onclick="cwsendpoint()">Установить эндпоинты калитки</button>
 </div>
  <script>
 
  function cwsendpoint(){
-var corsd = "https://cors-anywhere.herokuapp.com";
+var corsd = "https://cors-anywhere.herokuapp.com/";
 var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
 var cwslink = corsd+apilink+UUID;
