@@ -139,6 +139,8 @@ width:60%;
   <input id="potok" />
 		  <div>	 
 <button onclick="createpotok()">Создать поток</button>	</div>
+	  <div>	 
+<button onclick="deletepotok()">Удалить поток</button>	</div>
 <div>
 	  <p><b>UUID панели</b><br>
   <input id="uuid" />
@@ -349,8 +351,28 @@ xhr.onreadystatechange = function () {
 xhr.send();
 	}
 	</script>
+<script>
+		function deletepotok(){
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var potokv = document.getElementById("potok").value;
+var apilink = "http://sm.dev.sputnik.systems/stream/";
+var crepotok = corsd+apilink+potokv;
+var url = crepotok;
 
+var xhr = new XMLHttpRequest();
+xhr.open("DELETE", url);
 
+xhr.setRequestHeader("x-sm-token", "p0QNiM-Hy5w0-JILoz407ROjxuo");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+xhr.send();
+}
+	</script>
 
 
 
