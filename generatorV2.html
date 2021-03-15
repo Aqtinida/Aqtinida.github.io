@@ -135,8 +135,10 @@ width:60%;
 	  <p><b>Ссылка на проверку эндпоинта</b><br>
     <p id="endpointr"></p>
 <div>
-	  <p><b>Токен веб-апи</b><br>
-  <input id="token" />
+	  <p><b>UUID потока</b><br>
+  <input id="potok" />
+		  <div>	 
+<button onclick="createpotok()">Создать поток</button>	</div>
 <div>
 	  <p><b>UUID панели</b><br>
   <input id="uuid" />
@@ -162,7 +164,7 @@ var xhr = new XMLHttpRequest();
 xhr.open("PATCH", url);
 
 xhr.setRequestHeader("Accept", "application/json");
-xhr.setRequestHeader("Authorization", "Bearer +token");
+xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
 xhr.setRequestHeader("Content-Type", "application/json");
 
 xhr.onreadystatechange = function () {
@@ -324,7 +326,28 @@ xhr.send();
 
 
 
+<script>
+	function createpotok(){
+var corsd = "https://cors-anywhere.herokuapp.com/";
+var potokv = document.getElementById("potok").value;
+var apilink = "http://sm.dev.sputnik.systems/stream/";
+var crepotok = corsd+apilink+potokv;
+var url = crepotok;
 
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-sm-token", "p0QNiM-Hy5w0-JILoz407ROjxuo");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+xhr.send();
+	</script>
 
 
 
