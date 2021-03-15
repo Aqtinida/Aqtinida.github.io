@@ -166,7 +166,6 @@ var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
 var cwslink = corsd+apilink+UUID;
 var url = cwslink;
-var token = document.getElementById("token").value;
 
 var xhr = new XMLHttpRequest();
 xhr.open("PATCH", url);
