@@ -134,7 +134,9 @@ width:60%;
 <button onclick="endpoint()">Ссылка на энпоинт</button>
 	  <p><b>Ссылка на проверку эндпоинта</b><br>
     <p id="endpointr"></p>
-
+<div>
+	  <p><b>Токен веб-апи</b><br>
+  <input id="token" />
 <div>
 	  <p><b>UUID панели</b><br>
   <input id="uuid" />
@@ -154,12 +156,13 @@ var UUID = document.getElementById("uuid").value;
 var apilink = "https://api.sputnik.systems/api/v1/account/devices/intercoms/";
 var cwslink = corsd+apilink+UUID;
 var url = cwslink;
+var token = document.getElementById("token").value;
 
 var xhr = new XMLHttpRequest();
 xhr.open("PATCH", url);
 
 xhr.setRequestHeader("Accept", "application/json");
-xhr.setRequestHeader("Authorization", "Bearer 88e1abe7.eyJhbGciOiJIUzI1NiJ9.eyJlbnRpdHlfdXVpZCI6IjExNjkiLCJlbnRpdHlfdHlwZSI6InVzZXIiLCJlbnRpdHlfcmVmX3V1aWQiOiJiMTc4MmU0Zi05MTk4LTQ5ZDEtYjVhYS03YmRiYTljODdkMjEiLCJlbnRpdHlfbmFtZSI6bnVsbCwic2FsdCI6Ijg4ZTFhYmU3In0.F0XBk0oipaFKodrq-lbSM2EqyiOlerj5ID1Cy-SAb4k");
+xhr.setRequestHeader("Authorization", "Bearer +token");
 xhr.setRequestHeader("Content-Type", "application/json");
 
 xhr.onreadystatechange = function () {
